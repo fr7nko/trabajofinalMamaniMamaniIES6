@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Usuario</title>
+    <link rel="stylesheet" th:href="@{/style.css}">
+</head>
+<body>
+    <header>
+    <h1>Usuario</h1>
+</header>
+
+<main>
+
+    <!-- Formulario para agregar -->
+    <h2>Agregar Usuario</h2>
+
+    <form th:object="${nuevoUsuario}" 
+      th:action="@{/guardarUsuario}" 
+      method="post" 
+      enctype="multipart/form-data">
+
+    <label for="dni"></label>
+    <input type="text" id="dni" name="dni" placeholder="DNI" required th:field="*{dni}">
+    
+    <label for="nombre"></label>
+    <input type="text" id="nombre" name="nombre" placeholder="NOMBRE" required th:field="*{nombre}">
+    
+    <label for="apellido"></label>
+    <input type="text" id="apellido" name="apellido" placeholder="APELLIDO" required th:field="*{apellido}">
+    
+    <label for="fechaNac"></label>
+    <input type="date" id="fechaNac" name="fechaNac" required th:field="*{fechaNac}">
+    
+    <br><br>
+    <button type="submit" class="btn">AGREGAR</button>
+</form>
+
+<!--
+    <form data-th-object="${nuevoUsuario}" data-th-action="@{/guardarUsuario}" method="post" enctype="multipart/form-data"  >
+
+        <label for="dni"></label>
+        <input type="text" id="dni" name="dni" placeholder="DNI" required data-th-field="*{dni}">
+        
+        <label for="nombre"></label>
+        <input type="text" id="nombre" name="nombre" placeholder="NOMBRE" required data-th-field="*{nombre}">
+        
+        <label for="apellido"></label>
+        <input type="text" id="apellido" name="apellido" placeholder="APELLIDO" required data-th-field="*{apellido}">
+        
+        <label for="fechaNac"></label>
+        <input type="date" id="fechaNac" name="fechaNac" required data-th-field="*{fechaNac}">
+        
+        <label></label>
+        -->
+     <!-- <input type="checkbox" id="masculino" name="sexo" value="masculino">
+      <label for="masculino">Masculino</label>
+
+      <input type="checkbox" id="femenino" name="sexo" value="femenino">
+      <label for="femenino">Femenino</label>  -->
+      <br>
+      <br>
+        <button type="submit" class="btn">AGREGAR</button>
+    </form>
+    <div style="text-align:center;">
+        <br>  
+        <br>  
+        <a href="/" class="btn">INICIO</a>
+    </div>
+</main>
+
+<footer>
+    <p>&copy; 2025 IES N.º6 - Todos los derechos reservados</p>
+</footer>
+</body>
+</html>
