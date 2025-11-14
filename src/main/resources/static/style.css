@@ -8,7 +8,7 @@
 
 /* Encabezado */
 header {
-    background-color: #007bff; /* Azul fuerte */
+   /* background-color: #007bff; /* Azul fuerte */
     color: white;
     text-align: center;
     padding: 50px 20px;
@@ -16,8 +16,16 @@ header {
 }
 
 /* Contenido principal */
+
+body {
+  background-image: url("fondo.png"); /* Cambiá la ruta por donde esté tu imagen */
+  background-size: cover;        /* La imagen cubre toda la pantalla */
+  background-repeat: no-repeat;  /* No se repite */
+  background-position: center;   /* Centrada */
+}
+
 main {
-    background-color: #f3f3f3;
+   /* background-color: #f3f3f3;*/
     text-align: center;
     padding: 60px 20px;
 }

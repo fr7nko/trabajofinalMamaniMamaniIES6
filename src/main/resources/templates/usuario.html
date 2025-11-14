@@ -8,7 +8,7 @@
 </head>
 <body>
     <header>
-    <h1>Usuario</h1>
+    <h1>Usuarios</h1>
 </header>
 
 <main>
@@ -16,13 +16,14 @@
     <!-- Formulario para agregar -->
     <h2>Agregar Usuario</h2>
 
-    <form th:object="${nuevoUsuario}" 
-      th:action="@{/guardarUsuario}" 
+    <form th:object="${nuevoUsuario}"
+      data-th-action="${band}?@{/modificarUsuario}:@{/guardarUsuario}" 
       method="post" 
       enctype="multipart/form-data">
 
     <label for="dni"></label>
-    <input type="text" id="dni" name="dni" placeholder="DNI" required th:field="*{dni}">
+    <input type="text" id="dni" name="dni" th:field="*{dni}" placeholder="DNI" required
+     th:readonly="${band}">
     
     <label for="nombre"></label>
     <input type="text" id="nombre" name="nombre" placeholder="NOMBRE" required th:field="*{nombre}">
@@ -34,7 +35,7 @@
     <input type="date" id="fechaNac" name="fechaNac" required th:field="*{fechaNac}">
     
     <br><br>
-    <button type="submit" class="btn">AGREGAR</button>
+    <button type="submit" th:text="${band} ? 'MODIFICAR' : 'INGRESAR'" class="btn"></button>
 </form>
 
 <!--
@@ -58,17 +59,21 @@
       <label for="masculino">Masculino</label>
 
       <input type="checkbox" id="femenino" name="sexo" value="femenino">
-      <label for="femenino">Femenino</label>  -->
+      <label for="femenino">Femenino</label>  --
       <br>
       <br>
-        <button type="submit" class="btn">AGREGAR</button>
-    </form>
+       
+    </form>-->
     <div style="text-align:center;">
         <br>  
         <br>  
         <a href="/" class="btn">INICIO</a>
     </div>
 </main>
+<br>
+<br>
+<br>
+<br>
 
 <footer>
     <p>&copy; 2025 IES N.º6 - Todos los derechos reservados</p>

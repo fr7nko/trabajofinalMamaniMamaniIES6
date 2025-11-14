@@ -4,13 +4,23 @@ import java.time.LocalDate;
 
 import org.springframework.stereotype.Component;
 
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+
 
 @Component
+@Entity
 public class Usuario {
+    @Id
     private Integer dni;
+    @Column
     private String nombre;
+    @Column
     private String apellido;
+    @Column
     private LocalDate fechaNac;
+    @Column
     private Boolean estado;
     
 
