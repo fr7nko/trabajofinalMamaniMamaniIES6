@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Usuarios</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+
+    <!-- Encabezado -->
+    <header>
+        <h1>Lista de Usuarios</h1>
+    </header>
+
+    <!-- Contenido principal -->
+    <main>
+        <section class="tabla-contenedor">
+            <table>
+                <thead>
+                    <tr>
+                        <th>DNI</th>
+                        <th>Nombre</th>
+                        <th>Apellido</th>
+                        <th>Fecha Nac.</th>
+                        <th>Edicion</th>  
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr data-th-each="Usuario : ${listadoUsuario}">
+                        <td th:text="${Usuario.dni}"></td>
+                        <td th:text="${Usuario.nombre}"></td>
+                        <td th:text="${Usuario.apellido}"></td>
+                        <td th:text="${Usuario.fechaNac}"></td>
+                        <td>
+                            <a data-th-href="@{'/eliminarUsuario/'+${Usuario.dni}}"class="btn">Borrar</a>
+                            <a data-th-href="@{'/modificarUsuario/'+${Usuario.dni}}" class="btns">Modificar</a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- Botones -->
+        <div class="botones">
+            <a href="/usuario" class="btn">VOLVER</a>
+            <a href="/" class="btn">INICIO</a>
+        </div>
+    </main>
+
+    <!-- Pie de página -->
+    <footer>
+        <p>© 2025 IES N°6 - Todos los derechos reservados</p>
+    </footer>
+
+</body>
+</html>
