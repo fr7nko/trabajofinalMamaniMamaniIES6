@@ -22,15 +22,28 @@
       enctype="multipart/form-data">
 
     <label for="dni"></label>
-    <input type="text" id="dni" name="dni" th:field="*{dni}" placeholder="DNI" required
-     th:readonly="${band}">
+    <input type="text" id="dni" name="dni" th:field="*{dni}" placeholder="DNI" 
+    minlength="4" maxlength="10" required th:readonly="${band}">
+    <span th:if="${#fields.hasErrors('dni')}"
+      th:errors="*{dni}"
+      class="text-danger"></span>
     
     <label for="nombre"></label>
-    <input type="text" id="nombre" name="nombre" placeholder="NOMBRE" required th:field="*{nombre}">
+    <input type="text" id="nombre" name="nombre" placeholder="NOMBRE" required th:field="*{nombre}"
+    minlength="5" maxlength="20">
+    <span th:if="${#fields.hasErrors('nombre')}"
+      th:errors="*{nombre}"
+      class="text-danger"></span>
     
     <label for="apellido"></label>
-    <input type="text" id="apellido" name="apellido" placeholder="APELLIDO" required th:field="*{apellido}">
-    
+    <input type="text" id="apellido" name="apellido" placeholder="APELLIDO" 
+    minlength="4" maxlength="10" required  th:field="*{apellido}">
+    <span data-th-if="${#fields.hasErrors('apellido')}"
+            th:errors="*{apellido}"
+            class="text-danger">
+            Error en el apellido              
+    </span>
+
     <label for="fechaNac"></label>
     <input type="date" id="fechaNac" name="fechaNac" required th:field="*{fechaNac}">
     

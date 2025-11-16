@@ -7,6 +7,9 @@ import org.springframework.stereotype.Component;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 
 
 @Component
@@ -15,8 +18,13 @@ public class Usuario {
     @Id
     private Integer dni;
     @Column
+    @NotBlank(message = "El nombre es obligatorio")
+    @Size(min = 3, max = 20, message = "El nombre debe tener entre 3 y 20 caracteres")
     private String nombre;
     @Column
+    @NotBlank (message = "apellido es requerido")
+    @NotNull (message = "el apellido es requerido")
+    @Size (min = 4, max = 10, message = "debe tener mas de 4 letras y menos de 10")
     private String apellido;
     @Column
     private LocalDate fechaNac;

@@ -19,17 +19,20 @@ public class UsuarioServiceImpBD implements UsuarioServiceI {
     Usuario nuevoUsuario;
 
     @Autowired
-    UsuarioRepository usuarioRepository;
+    UsuarioRepository usuarioRepository;  
 
     @Override
-    public void borraUsuario(Integer dni) {
-    
-        usuarioRepository.deleteById(dni);
+    public void borraUsuario(Integer dni) throws Exception {
+        Usuario usuarioBorrar = usuarioRepository.findById(dni).orElseThrow(() -> new Exception("Usuario no encontrado"));
+        usuarioBorrar.setEstado(false);
+        usuarioRepository.save(usuarioBorrar);
+       // usuarioRepository.deleteById(dni);
+
     }
 
     @Override
     public void agregarUsuario(Usuario usuario) {
-        
+        usuario.setEstado(true);
         usuarioRepository.save(usuario);
     
     }
@@ -54,6 +57,11 @@ public class UsuarioServiceImpBD implements UsuarioServiceI {
     @Override
     public Usuario crearNuevoUsuario() {
        return nuevoUsuario;
+    }
+
+    @Override
+    public List<Usuario> listarTodosUsuariosActivos() {
+         return usuarioRepository.findByEstado(true);
     }
     
 }

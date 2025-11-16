@@ -59,4 +59,10 @@ public class UsuarioServiceImp implements UsuarioServiceI {
         return nuevoUsuario;
     }
 
+    @Override
+    public List<Usuario> listarTodosUsuariosActivos() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'listarTodosUsuariosActivos'");
+    }
+
 }
