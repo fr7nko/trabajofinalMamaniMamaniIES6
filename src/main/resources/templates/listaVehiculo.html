@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Vehiculos</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+
+    <!-- Encabezado -->
+    <header>
+        <h1>Lista de Vehiculos</h1>
+    </header>
+
+    <!-- Contenido principal -->
+    <main>
+        <section class="tabla-contenedor">
+            <table>
+                <thead>
+                    <tr>
+                        <th>PATENTE</th>
+                        <th>Marca</th>
+                        <th>Modelo</th>  
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr data-th-each="Vehiculo : ${listadoVehiculo}">
+                        <td th:text="${Vehiculo.patente}"></td>
+                        <td th:text="$Vehiculo.marca}"></td>
+                        <td>
+                            <a data-th-href="@{'/eliminarVehiculo/'+${Vehiculo.patente}}"class="btn">Borrar</a>
+                            <a data-th-href="@{'/eliminarVehiculo/'+${Vehiculo.patente}}" class="btns">Modificar</a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- Botones -->
+        <div class="botones">
+            <a href="/vehiculo" class="btn">VOLVER</a>
+            <a href="/" class="btn">INICIO</a>
+        </div>
+    </main>
+
+    <!-- Pie de página -->
+    <footer>
+        <p>© 2025 IES N°6 - Todos los derechos reservados</p>
+    </footer>
+
+</body>
+</html>

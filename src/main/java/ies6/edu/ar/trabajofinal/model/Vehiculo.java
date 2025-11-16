@@ -2,25 +2,18 @@ package ies6.edu.ar.trabajofinal.model;
 
 import org.springframework.stereotype.Component;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
 
-@Entity
 @Component
 
 public class Vehiculo {
 
-     @Id
+
     private Integer patente;
 
-    @Column
     private String marca;
 
-    @Column
     private String modelo;
 
-    @Column
     private String color;
 
     public Vehiculo() {

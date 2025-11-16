@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vehiculo</title>
+    <link rel="stylesheet" th:href="@{/style.css}">
+</head>
+<body>
+    <header>
+    <h1>Vehiculo</h1>
+</header>
+
+<main>
+
+    <!-- Formulario para agregar -->
+    <h2>Agregar Vehiculo</h2>
+
+    <form th:object="${nuevoVehiculo}" 
+      th:action="@{/guardarVehiculo}" 
+      method="post" 
+      enctype="multipart/form-data">
+
+    <label for="patente"></label>
+    <input type="text" id="patente" name="patente" placeholder="PATENTE" required th:field="*{patente}">
+    
+    <label for="marca"></label>
+    <input type="text" id="marca" name="marca" placeholder="MARCA" required th:field="*{marca}">
+    
+    
+   
+    <br><br>
+    <button type="submit" class="btn">AGREGAR</button>
+</form>
+
+
+      <br>
+      <br>
+        <button type="submit" class="btn">AGREGAR</button>
+    </form>
+    <div style="text-align:center;">
+        <br>  
+        <br>  
+        <a href="/" class="btn">INICIO</a>
+    </div>
+</main>
+
+<footer>
+    <p>&copy; 2025 IES N.º6 - Todos los derechos reservados</p>
+</footer>
+</body>
+</html>
