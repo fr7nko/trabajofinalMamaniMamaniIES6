@@ -4,15 +4,17 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
+
 import ies6.edu.ar.trabajofinal.model.Vehiculo;
 
-//@Service
+
+@Service
 public interface VehiculoServiceI {
     // declaracion de metodos
     //acciones que se pueden hacer
 
 
-    public void borraVehiculo(Integer patente);
+    public void borraVehiculo(Integer patente) throws Exception;
     public void agregarVehiculo(Vehiculo vehiculo);
     public void modificarVehiculo(Vehiculo vehiculo);
     public List<Vehiculo> listarTodosVehiculo();

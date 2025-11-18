@@ -1,15 +1,25 @@
 package ies6.edu.ar.trabajofinal.service;
 
+import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 import ies6.edu.ar.trabajofinal.model.Vehiculo;
 
 
-//@Service("servicioVehiculoMySQL")
+@Service
+@Qualifier("servicioVehiculoArrayList")
 public class VehiculoServiceImp implements VehiculoServiceI {
+
+
+    List<Vehiculo> listadoVehiculos = new ArrayList<Vehiculo>();
+
+    @Autowired
+    Vehiculo nuevoVehiculo;
+
 
     @Override
     public void borraVehiculo(Integer patente) {
@@ -19,8 +29,7 @@ public class VehiculoServiceImp implements VehiculoServiceI {
 
     @Override
     public void agregarVehiculo(Vehiculo vehiculo) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'agregarVehiculo'");
+       listadoVehiculos.add(vehiculo);
     }
 
     @Override
@@ -31,8 +40,7 @@ public class VehiculoServiceImp implements VehiculoServiceI {
 
     @Override
     public List<Vehiculo> listarTodosVehiculo() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'listarTodosVehiculo'");
+        return listadoVehiculos;
     }
 
     @Override
@@ -43,8 +51,7 @@ public class VehiculoServiceImp implements VehiculoServiceI {
 
     @Override
     public Vehiculo crearNuevoVehiculo() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'crearNuevoVehiculo'");
+        return nuevoVehiculo;
     }
 
     @Override

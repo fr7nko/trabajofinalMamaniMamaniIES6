@@ -1,53 +1,70 @@
 package ies6.edu.ar.trabajofinal.service;
 
-import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
+
 
 import ies6.edu.ar.trabajofinal.model.Vehiculo;
 
-@Service("servicioVehiculoMySQL")
+import ies6.edu.ar.trabajofinal.repository.VehiculoRepository;
+
+@Service
+@Qualifier("servicioVehiculoMySQL")
 public class VehiculoServiceImpBD implements VehiculoServiceI {
 
-    private List<Vehiculo> lista = new ArrayList<>();
+
+     @Autowired
+    Vehiculo nuevoVehiculo;
+
+    @Autowired
+    VehiculoRepository vehiculoRepository; 
+
 
     @Override
-    public void borraVehiculo(Integer patente) {
-        lista.removeIf(v -> v.getPatente().equals(patente));
+    public void borraVehiculo(Integer patente) throws Exception {
+        Vehiculo vehiculoBorrar = vehiculoRepository.findById(patente).orElseThrow(()-> new Exception("Vehiculo no encontrado"));
+        vehiculoBorrar.setEstado(false);
+        vehiculoRepository.save(vehiculoBorrar);
+       // vehiculoRepository.deleteById(patente);
     }
 
     @Override
     public void agregarVehiculo(Vehiculo vehiculo) {
-        lista.add(vehiculo);
+        vehiculo.setEstado(true);
+        vehiculoRepository.save(vehiculo);
     }
 
     @Override
     public void modificarVehiculo(Vehiculo vehiculo) {
-        borraVehiculo(vehiculo.getPatente());
-        agregarVehiculo(vehiculo);
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'modificarVehiculo'");
     }
 
     @Override
     public List<Vehiculo> listarTodosVehiculo() {
-        return lista;
+        return(List<Vehiculo>) vehiculoRepository.findAll();
     }
 
     @Override
-    public Vehiculo buscarUnVehiculo(Integer patente) {
-        return lista.stream()
-                    .filter(v -> v.getPatente().equals(patente))
-                    .findFirst()
-                    .orElse(null);
+    public Vehiculo buscarUnVehiculo(Integer patente) throws Exception {
+        return vehiculoRepository.findById(patente).orElseThrow(()-> new Exception("Usuario no encontrado"));
     }
 
     @Override
     public Vehiculo crearNuevoVehiculo() {
-        return new Vehiculo();
+        return nuevoVehiculo;
     }
 
     @Override
     public List<Vehiculo> listarTodosVehiculosActivos() {
-        return lista;
+        return vehiculoRepository.findByEstado(true);
     }
+
+
+
+    
+    
 }

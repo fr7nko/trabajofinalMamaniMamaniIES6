@@ -50,17 +50,17 @@ public class VehiculoController {
         vehiculoService.agregarVehiculo(vehiculoParaGuardar);
 
         ModelAndView modelAndView = new ModelAndView("listaVehiculo");
-        modelAndView.addObject("listadoVehiculo", vehiculoService.listarTodosVehiculo());
+        modelAndView.addObject("listadoVehiculo", vehiculoService.listarTodosVehiculosActivos());
         return modelAndView;
     }
 
     
     //eliminar
     @GetMapping("/eliminarVehiculo/{patente}")
-    public ModelAndView eliminarVehiculo(@PathVariable("patente") Integer patente) {
+    public ModelAndView eliminarVehiculo(@PathVariable("patente") Integer patente) throws Exception {
         ModelAndView carritoDeEliminar = new ModelAndView("listaVehiculo");
         vehiculoService.borraVehiculo(patente);
-        carritoDeEliminar.addObject("listadoVehiculo", vehiculoService.listarTodosVehiculos());
+        carritoDeEliminar.addObject("listadoVehiculo", vehiculoService.listarTodosVehiculosActivos());
         return carritoDeEliminar;
     }
 
@@ -78,13 +78,20 @@ public class VehiculoController {
     public ModelAndView modificarVehiculo(@ModelAttribute("nuevoVehiculo") Vehiculo vehiculoModificado){
         ModelAndView listadoEditado = new ModelAndView("listaVehiculo");
         vehiculoService.agregarVehiculo(vehiculoModificado);
-        listadoEditado.addObject("listadoVehiculo", vehiculoService.listarTodosVehiculo());
+        listadoEditado.addObject("listadoVehiculo", vehiculoService.listarTodosVehiculosActivos());
         
         return listadoEditado;
         
     }
 
 
-
+    @GetMapping("/listarVehiculo")
+    public ModelAndView listarVehiculoActivos(){
+        ModelAndView carritoParaMostrarVehiculo = new ModelAndView("listaVehiculo");
+        carritoParaMostrarVehiculo.addObject("listadoVehiculo", vehiculoService.listarTodosVehiculosActivos());
+        return carritoParaMostrarVehiculo;
+    }
+    
+    
 
 }

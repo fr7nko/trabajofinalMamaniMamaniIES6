@@ -8,7 +8,7 @@
 </head>
 <body>
     <header>
-    <h1>Vehiculo</h1>
+    <h1>Vehiculos</h1>
 </header>
 
 <main>
@@ -16,34 +16,57 @@
     <!-- Formulario para agregar -->
     <h2>Agregar Vehiculo</h2>
 
-    <form th:object="${nuevoVehiculo}" 
-      th:action="@{/guardarVehiculo}" 
+    <form th:object="${nuevoVehiculo}"
+      data-th-action="${band}?@{/modificarVehiculo}:@{/guardarVehiculo}" 
       method="post" 
       enctype="multipart/form-data">
 
     <label for="patente"></label>
-    <input type="text" id="patente" name="patente" placeholder="PATENTE" required th:field="*{patente}">
+    <input type="text" id="patente" name="patente" th:field="*{patente}" placeholder="PATENTE" 
+    minlength="4" maxlength="10" required th:readonly="${band}">
+    <span th:if="${#fields.hasErrors('patente')}"
+      th:errors="*{patente}"
+      class="text-danger"></span>
     
     <label for="marca"></label>
-    <input type="text" id="marca" name="marca" placeholder="MARCA" required th:field="*{marca}">
+    <input type="text" id="marca" name="marca" placeholder="MARCA" required th:field="*{marca}"
+    minlength="3" maxlength="20">
+    <span th:if="${#fields.hasErrors('marca')}"
+      th:errors="*{marca}"
+      class="text-danger"></span>
     
+    <label for="modelo"></label>
+    <input type="text" id="modelo" name="modelo" placeholder="MODELO" 
+    minlength="4" maxlength="10" required  th:field="*{modelo}">
+    <span data-th-if="${#fields.hasErrors('modelo')}"
+            th:errors="*{modelo}"
+            class="text-danger">
+            Error en el apellido              
+    </span>
+
+      <label for="color"></label>
+    <input type="text" id="color" name="color" placeholder="COLOR" 
+    minlength="2" maxlength="10" required  th:field="*{color}">
+    <span data-th-if="${#fields.hasErrors('color')}"
+            th:errors="*{color}"
+            class="text-danger">
+            Error en el apellido              
+    </span>
     
-   
     <br><br>
-    <button type="submit" class="btn">AGREGAR</button>
+    <button type="submit" th:text="${band} ? 'MODIFICAR' : 'INGRESAR'" class="btn"></button>
 </form>
 
-
-      <br>
-      <br>
-        <button type="submit" class="btn">AGREGAR</button>
-    </form>
     <div style="text-align:center;">
         <br>  
         <br>  
         <a href="/" class="btn">INICIO</a>
     </div>
 </main>
+<br>
+<br>
+<br>
+<br>
 
 <footer>
     <p>&copy; 2025 IES N.º6 - Todos los derechos reservados</p>
