@@ -10,4 +10,9 @@ public class IndexController {
     public String getUsuario() {
         return "index";
     }
+
+    @GetMapping("/home")
+    public String getHome() {
+        return "home";
+    }
 }

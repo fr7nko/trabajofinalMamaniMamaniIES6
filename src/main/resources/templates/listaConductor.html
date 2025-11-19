@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Conductor</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+    <div data-th-if="${correcto}" class="alert alert-success">
+        <span th:text="${correcto}"></span>
+
+    </div>
+    <!-- Encabezado -->
+    <header>
+        <h1>Lista de Conductores</h1>
+    </header>
+
+    <!-- Contenido principal -->
+    <main>
+        <section class="tabla-contenedor">
+            <table>
+                <thead>
+                    <tr>
+                        <th>DNI</th>
+                        <th>Nombre</th>
+                        <th>Apellido</th>
+                        <th>Fecha Nac.</th>
+                        <th>Edicion</th>  
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr data-th-each="Conductor : ${listadoConductor}">
+                        <td th:text="${Conductor.dni}"></td>
+                        <td th:text="${Conductor.nombre}"></td>
+                        <td th:text="${Conductor.apellido}"></td>
+                        <td th:text="${Conductor.fechaNac}"></td>
+                        <td>
+                            <a data-th-href="@{'/eliminarConductor/'+${Conductor.dni}}"class="btn">Borrar</a>
+                            <a data-th-href="@{'/modificarConductor/'+${Conductor.dni}}" class="btns">Modificar</a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- Botones -->
+        <div class="botones">
+            <a href="/conductor" class="btn">VOLVER</a>
+            <a href="/" class="btn">INICIO</a>
+        </div>
+    </main>
+
+    <!-- Pie de página -->
+    <footer>
+        <p>© 2025 IES N°6 - Todos los derechos reservados</p>
+    </footer>
+
+</body>
+</html>

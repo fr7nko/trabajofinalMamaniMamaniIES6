@@ -1,0 +1,98 @@
+
+<!-- vista de los autos para empezar el viaje-->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Vehiculos</title>
+    <link rel="stylesheet" href="/style.css">
+    <style>
+        /* Estilos básicos de cards */
+        .card-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+            margin: 20px;
+        }
+
+        .card {
+            background-color: #f5f5f5;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            padding: 20px;
+            width: 250px;
+            box-shadow: 2px 2px 8px rgba(0,0,0,0.1);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .card h3 {
+            margin: 0 0 10px 0;
+            font-size: 1.2em;
+        }
+
+        .card p {
+            margin: 5px 0;
+        }
+
+        .btn {
+            padding: 8px 15px;
+            border: none;
+            border-radius: 5px;
+            background-color: #007bff;
+            color: white;
+            text-decoration: none;
+            margin-top: 10px;
+            text-align: center;
+            display: inline-block;
+            cursor: pointer;
+        }
+
+        .btn-success {
+            background-color: #28a745;
+        }
+
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Lista de Vehículos</h1>
+    </header>
+
+    <main>
+        <div data-th-if="${correcto}" class="alert alert-success">
+            <span th:text="${correcto}"></span>
+        </div>
+
+        <div class="card-container">
+            <div class="card" data-th-each="vehiculo : ${listadoVehiculo}">
+                <h3 th:text="${vehiculo.marca} + ' ' + ${vehiculo.modelo}">Marca Modelo</h3>
+                  <p>
+        <strong>Conductor:</strong>
+        <span th:text="${vehiculo.conductor != null ? vehiculo.conductor.nombre + ' ' + vehiculo.conductor.apellido : 'Sin conductor'}">
+            Sin conductor
+        </span>
+    </p>
+                <p><strong>Patente:</strong> <span th:text="${vehiculo.patente}">1234</span></p>
+                <p><strong>Color:</strong> <span th:text="${vehiculo.color}">Rojo</span></p>
+
+                <!-- Botones -->
+                <a th:href="@{'/viaje/'+${vehiculo.patente}}" class="btn btn-success">Cargar usuario</a>
+            </div>
+        </div>
+
+        <!-- Botones de navegación -->
+        <div style="text-align:center; margin-top:20px;">
+            <a href="/" class="btn">INICIO</a>
+           <!--  <a href="/listaViajes" class="btn">VER VIAJES REALIZADOS</a>-->
+        </div>
+    </main>
+
+    <footer>
+        <p>© 2025 IES N°6 - Todos los derechos reservados</p>
+    </footer>
+</body>
+</html>

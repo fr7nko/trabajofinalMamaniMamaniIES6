@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nuevo Viaje</title>
+    <link rel="stylesheet" th:href="@{/style.css}">
+</head>
+<body>
+<header>
+    <h1>Registrar Viaje</h1>
+</header>
+
+<main>
+    <form th:object="${nuevoViaje}" th:action="@{/guardarViaje}" method="post">
+
+        <!-- Vehículo (solo lectura) -->
+        <label for="vehiculo">Vehículo (Patente)</label>
+        <input type="text" id="vehiculo" name="vehiculo.patente" th:value="*{vehiculo.patente}" readonly>
+
+        <!-- Usuario -->
+        <label for="usuario">Usuario</label>
+        <select id="usuario" name="usuario.dni" required>
+            <option value="" disabled selected>Seleccione un usuario</option>
+            <option th:each="u : ${listadoUsuario}" th:value="${u.dni}" 
+                    th:text="${u.nombre + ' ' + u.apellido}"></option>
+        </select>
+
+       <!-- Tipo de viaje -->
+        <label for="tipoViaje">Tipo de viaje</label>
+        <select id="tipoViaje" name="tipoViaje" th:field="*{tipoViaje}" required>
+            <option value="">Seleccione una opción</option>
+            <option value="CORTA">Corta distancia</option>
+            <option value="MEDIA">Media distancia</option>
+            <option value="LARGA">Larga distancia</option>
+        </select>
+
+        <!-- Precio -->
+        <label for="precio">Precio</label>
+        <input type="number" id="precio" name="precio" th:field="*{precio}" placeholder="Precio" step="0.01" required>
+
+        <!-- Fecha -->
+        <label for="fechaViaje">Fecha del viaje</label>
+        <input type="date" id="fechaViaje" name="fechaViaje" th:field="*{fechaViaje}" required>
+
+        <br><br>
+        <button type="submit" class="btn">REALIZAR VIAJE</button>
+    </form>
+
+    <div style="text-align:center; margin-top:20px;">
+        <a href="/listaViajes" class="btn">VER LISTA DE VIAJES</a>
+        <a href="/" class="btn">INICIO</a>
+    </div>
+</main>
+
+<footer>
+    <p>&copy; 2025 IES N.º6 - Todos los derechos reservados</p>
+</footer>
+</body>
+</html>

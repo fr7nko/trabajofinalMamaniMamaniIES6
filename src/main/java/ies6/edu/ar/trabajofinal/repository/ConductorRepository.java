@@ -1,15 +1,12 @@
 package ies6.edu.ar.trabajofinal.repository;
 
 import java.util.List;
-
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
-
-import ies6.edu.ar.trabajofinal.model.Usuario;
-
+import ies6.edu.ar.trabajofinal.model.Conductor;
 
 @Repository
-public interface UsuarioRepository extends CrudRepository <Usuario, Integer>{
+public interface ConductorRepository extends CrudRepository<Conductor, Integer> {
 
-    public List<Usuario> findByEstado (Boolean estado);    
+    public List<Conductor> findByEstado (Boolean estado); 
 }
