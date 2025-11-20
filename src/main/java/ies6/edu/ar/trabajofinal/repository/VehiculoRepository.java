@@ -5,11 +5,10 @@ import java.util.List;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
-import ies6.edu.ar.trabajofinal.model.Usuario;
-
+import ies6.edu.ar.trabajofinal.model.Vehiculo;
 
 @Repository
-public interface UsuarioRepository extends CrudRepository <Usuario, Integer>{
+public interface VehiculoRepository extends CrudRepository <Vehiculo, Integer>{
 
-    public List<Usuario> findByEstado (Boolean estado);    
+    public List<Vehiculo> findByEstado (Boolean estado);    
 }

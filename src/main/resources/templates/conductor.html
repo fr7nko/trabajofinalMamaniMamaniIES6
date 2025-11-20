@@ -3,21 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Usuario</title>
+    <title>Conductor</title>
     <link rel="stylesheet" th:href="@{/style.css}">
 </head>
 <body>
     <header>
-    <h1>Usuarios</h1>
+    <h1>Conductores</h1>
 </header>
 
 <main>
 
     <!-- Formulario para agregar -->
-    <h2>Agregar Usuario</h2>
+    <h2>Agregar Conductor</h2>
 
-    <form th:object="${nuevoUsuario}"
-      data-th-action="${band}?@{/modificarUsuario}:@{/guardarUsuario}" 
+    <form th:object="${nuevoConductor}"
+      data-th-action="${band}?@{/modificarConductor}:@{/guardarConductor}" 
       method="post" 
       enctype="multipart/form-data">
 
@@ -54,8 +54,8 @@
         <br>  
         <br>  
         <a href="/" class="btn">INICIO</a>
-        <a href="/home" class="btn">VOLVER</a>
-        <a href="/listarUsuario" class="btn">VER USUARIOS</a>
+        <a href="/" class="btn">VOLVER</a>
+            <a href="/listarConductor" class="btn">VER CONDUCTORES</a>
     </div>
 </main>
 <br>

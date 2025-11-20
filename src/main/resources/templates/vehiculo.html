@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vehiculo</title>
+    <link rel="stylesheet" th:href="@{/style.css}">
+</head>
+<body>
+    <header>
+    <h1>Vehiculos</h1>
+</header>
+
+<main>
+
+    <!-- Formulario para agregar -->
+    <h2>Agregar Vehiculo</h2>
+
+    <form th:object="${nuevoVehiculo}"
+      data-th-action="${band}?@{/modificarVehiculo}:@{/guardarVehiculo}" 
+      method="post" 
+      enctype="multipart/form-data">
+
+    <label for="patente"></label>
+    <input type="text" id="patente" name="patente" th:field="*{patente}" placeholder="PATENTE" 
+    minlength="4" maxlength="10" required th:readonly="${band}">
+    <span th:if="${#fields.hasErrors('patente')}"
+      th:errors="*{patente}"
+      class="text-danger"></span>
+    
+    <label for="marca"></label>
+    <input type="text" id="marca" name="marca" placeholder="MARCA" required th:field="*{marca}"
+    minlength="3" maxlength="20">
+    <span th:if="${#fields.hasErrors('marca')}"
+      th:errors="*{marca}"
+      class="text-danger"></span>
+    
+    <label for="modelo"></label>
+    <input type="text" id="modelo" name="modelo" placeholder="MODELO" 
+    minlength="4" maxlength="10" required  th:field="*{modelo}">
+    <span data-th-if="${#fields.hasErrors('modelo')}"
+            th:errors="*{modelo}"
+            class="text-danger">
+            Error en el apellido              
+    </span>
+
+      <label for="color"></label>
+    <input type="text" id="color" name="color" placeholder="COLOR" 
+    minlength="2" maxlength="10" required  th:field="*{color}">
+    <span data-th-if="${#fields.hasErrors('color')}"
+            th:errors="*{color}"
+            class="text-danger">
+            Error en el apellido              
+    </span>
+    
+    <!-- SELECT: elegir conductor -->
+<label for="conductor">Conductor</label>
+<select id="conductor" name="conductor.dni" th:field="*{conductor.dni}" required class="input-field">
+    <option value="" disabled th:selected="${nuevoVehiculo.conductor == null}">Seleccione un conductor</option>
+    <option th:each="c : ${listaConductores}"
+            th:value="${c.dni}"
+            th:text="${c.nombre + ' ' + c.apellido}"
+            th:selected="${nuevoVehiculo.conductor != null} ? ${c.dni} == ${nuevoVehiculo.conductor.dni} : false">
+    </option>
+</select>
+<span th:if="${#fields.hasErrors('conductor')}" th:errors="*{conductor}" class="text-danger"></span>
+
+
+
+    <br><br>
+    <button type="submit" th:text="${band} ? 'MODIFICAR' : 'INGRESAR'" class="btn"></button>
+</form>
+
+    <div style="text-align:center;">
+        <br>  
+        <br>  
+          <a href="/" class="btn">INICIO</a>
+        <a href="/home" class="btn">VOLVER</a>
+        <a href="/listarVehiculo" class="btn">VER VEHICULOS</a>
+    </div>
+</main>
+<br>
+<br>
+<br>
+<br>
+
+<footer>
+    <p>&copy; 2025 IES N.º6 - Todos los derechos reservados</p>
+</footer>
+</body>
+</html>

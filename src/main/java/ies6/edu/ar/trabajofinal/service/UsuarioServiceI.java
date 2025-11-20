@@ -12,12 +12,13 @@ public interface UsuarioServiceI {
     //acciones que se pueden hacer
 
 
-    public void borraUsuario(Integer dni);
+    public void borraUsuario(Integer dni) throws Exception;
     public void agregarUsuario(Usuario usuario);
     public void modificarUsuario(Usuario usuario);
     public List<Usuario> listarTodosUsuario();
     public Usuario buscarUnUsuario(Integer dni) throws Exception;
     public Usuario crearNuevoUsuario();
+    public List<Usuario> listarTodosUsuariosActivos();
 
 
 }
