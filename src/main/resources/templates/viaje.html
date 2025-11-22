@@ -9,6 +9,11 @@
 <body>
 <header>
     <h1>Registrar Viaje</h1>
+      <p style="text-align:center; margin-top:10px; font-size:1.1em; font-weight:bold;">
+        Viajes de <span style="color:#007bff;">Corta distancia</span>: $7.000,<br>
+        Viajes de <span style="color:#28a745;">Media distancia</span>: $10.000,  <br>
+        Viajes de <span style="color:#d39e00;">Larga distancia</span>: $20.000
+    </p>
 </header>
 
 <main>
@@ -36,8 +41,7 @@
         </select>
 
         <!-- Precio -->
-        <label for="precio">Precio</label>
-        <input type="number" id="precio" name="precio" th:field="*{precio}" placeholder="Precio" step="0.01" required>
+        <input type="hidden" th:field="*{precio}">
 
         <!-- Fecha -->
         <label for="fechaViaje">Fecha del viaje</label>
@@ -48,7 +52,7 @@
     </form>
 
     <div style="text-align:center; margin-top:20px;">
-        <a href="/listaViajes" class="btn">VER LISTA DE VIAJES</a>
+        <a href="/listarViajes" class="btn">VER LISTA DE VIAJES</a>
         <a href="/" class="btn">INICIO</a>
     </div>
 </main>

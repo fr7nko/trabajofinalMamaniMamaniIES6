@@ -21,6 +21,7 @@
       method="post" 
       enctype="multipart/form-data">
 
+      <!-- PATENTE -->
     <label for="patente"></label>
     <input type="text" id="patente" name="patente" th:field="*{patente}" placeholder="PATENTE" 
     minlength="4" maxlength="10" required th:readonly="${band}">
@@ -28,6 +29,7 @@
       th:errors="*{patente}"
       class="text-danger"></span>
     
+         <!-- MARCA -->
     <label for="marca"></label>
     <input type="text" id="marca" name="marca" placeholder="MARCA" required th:field="*{marca}"
     minlength="3" maxlength="20">
@@ -35,6 +37,7 @@
       th:errors="*{marca}"
       class="text-danger"></span>
     
+      <!-- MODELO -->
     <label for="modelo"></label>
     <input type="text" id="modelo" name="modelo" placeholder="MODELO" 
     minlength="4" maxlength="10" required  th:field="*{modelo}">
@@ -44,6 +47,7 @@
             Error en el apellido              
     </span>
 
+      <!-- COLOR -->
       <label for="color"></label>
     <input type="text" id="color" name="color" placeholder="COLOR" 
     minlength="2" maxlength="10" required  th:field="*{color}">
@@ -52,6 +56,21 @@
             class="text-danger">
             Error en el apellido              
     </span>
+
+     <!-- TIPO VEHICULO (ENUM) -->
+        <label for="tipoVehiculo">Tipo de Vehículo</label>
+        <select id="tipoVehiculo" th:field="*{tipoVehiculo}" required>
+            <option value="" disabled 
+                    th:selected="${nuevoVehiculo.tipoVehiculo == null}">
+                Seleccione un tipo
+            </option>
+            <option th:each="t : ${T(ies6.edu.ar.trabajofinal.model.TipoVehiculo).values()}"
+                    th:value="${t}"
+                    th:text="${t}">
+            </option>
+        </select>
+        <span th:if="${#fields.hasErrors('tipoVehiculo')}"
+              th:errors="*{tipoVehiculo}" class="text-danger"></span>
     
     <!-- SELECT: elegir conductor -->
 <label for="conductor">Conductor</label>

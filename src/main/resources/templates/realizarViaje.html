@@ -60,36 +60,60 @@
 <body>
     <header>
         <h1>Lista de Vehículos</h1>
+          <p style="text-align:center; margin-top:10px; font-size:1.1em; font-weight:bold;">
+        Los autos de tipo <span style="color:#007bff;">X</span> tienen precio el normal, <br>
+        los autos <span style="color:#28a745;">Luxe</span> aumentan un 10%, <br>
+        y los autos <span style="color:#d39e00;">Premium</span> aumentan un 20%.
+    </p>
     </header>
 
-    <main>
-        <div data-th-if="${correcto}" class="alert alert-success">
-            <span th:text="${correcto}"></span>
-        </div>
+  <main>
+    <div data-th-if="${correcto}" class="alert alert-success">
+        <span th:text="${correcto}"></span>
+    </div>
 
-        <div class="card-container">
-            <div class="card" data-th-each="vehiculo : ${listadoVehiculo}">
-                <h3 th:text="${vehiculo.marca} + ' ' + ${vehiculo.modelo}">Marca Modelo</h3>
-                  <p>
-        <strong>Conductor:</strong>
-        <span th:text="${vehiculo.conductor != null ? vehiculo.conductor.nombre + ' ' + vehiculo.conductor.apellido : 'Sin conductor'}">
-            Sin conductor
-        </span>
-    </p>
-                <p><strong>Patente:</strong> <span th:text="${vehiculo.patente}">1234</span></p>
-                <p><strong>Color:</strong> <span th:text="${vehiculo.color}">Rojo</span></p>
+    <div class="card-container">
+        <div class="card" data-th-each="vehiculo : ${listadoVehiculo}">
+            
+            <!-- Título centrado -->
+            <h3 class="titulo-centro" 
+                th:text="${vehiculo.marca} + ' ' + ${vehiculo.modelo}">
+                Marca Modelo
+            </h3>
 
-                <!-- Botones -->
-                <a th:href="@{'/viaje/'+${vehiculo.patente}}" class="btn btn-success">Cargar usuario</a>
+            <!-- Datos alineados a la derecha -->
+            <div class="derecha">
+                <p>
+                    <strong>Conductor:</strong>
+                    <span th:text="${vehiculo.conductor != null ? vehiculo.conductor.nombre + ' ' + vehiculo.conductor.apellido : 'Sin conductor'}">
+                        Sin conductor
+                    </span>
+                </p>
+
+                <p><strong>Patente:</strong> 
+                    <span th:text="${vehiculo.patente}">1234</span>
+                </p>
+
+                <p><strong>Color:</strong> 
+                    <span th:text="${vehiculo.color}">Rojo</span>
+                </p>
+
+                <p><strong>Tipo:</strong> 
+                    <span th:text="${vehiculo.tipoVehiculo}">Tipo</span>
+                </p>
             </div>
-        </div>
 
-        <!-- Botones de navegación -->
-        <div style="text-align:center; margin-top:20px;">
-            <a href="/" class="btn">INICIO</a>
-           <!--  <a href="/listaViajes" class="btn">VER VIAJES REALIZADOS</a>-->
+            <!-- Botón -->
+            <a th:href="@{'/viaje/'+${vehiculo.patente}}" class="btn btn-success btn-abajo">Cargar usuario</a>
         </div>
-    </main>
+    </div>
+
+    <!-- Navegación -->
+    <div style="text-align:center; margin-top:20px;">
+        <a href="/" class="btn">INICIO</a>
+    </div>
+</main>
+
 
     <footer>
         <p>© 2025 IES N°6 - Todos los derechos reservados</p>

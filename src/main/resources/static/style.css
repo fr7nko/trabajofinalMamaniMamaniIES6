@@ -142,3 +142,59 @@ tr:nth-child(even) {
     justify-content: center;
     gap: 20px;
 }
+
+
+/* Título centrado */
+.titulo-centro {
+    text-align: center;
+    font-size: 22px;
+    margin-bottom: 15px;
+}
+
+/* Datos alineados a la derecha */
+.derecha {
+    text-align: left;
+    margin-right: 10px;
+}
+
+/* Estilo opcional del card */
+.card {
+    padding: 15px;
+    border-radius: 10px;
+    background: #f8f9fa;
+    box-shadow: 0px 2px 5px rgba(0,0,0,0.2);
+    margin-bottom: 20px;
+}
+
+.btn-abajo {
+    margin-top: auto; /* Lo empuja al final del card */
+}
+
+.card {
+    padding: 15px;
+    border-radius: 10px;
+    background: #f8f9fa;
+    box-shadow: 0px 2px 5px rgba(0,0,0,0.2);
+    margin-bottom: 20px;
+
+    /* NUEVO */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 260px; /* Puedes ajustar la altura */
+}
+
+/* Hace que todo el card se comporte como columna */
+.card-flex {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 300px; /* Ajustá según tu diseño */
+}
+
+/* Botones al fondo */
+.botones-abajo {
+    margin-top: auto;      /* Baja los botones al fondo */
+    display: flex;
+    gap: 10px;
+}

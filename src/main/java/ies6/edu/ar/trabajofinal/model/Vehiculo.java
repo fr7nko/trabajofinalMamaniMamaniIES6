@@ -4,6 +4,8 @@ import org.springframework.stereotype.Component;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToOne;
@@ -16,18 +18,25 @@ import jakarta.validation.constraints.Size;
 public class Vehiculo {
     @Id
     private Integer patente;
+    
     @Column
     @NotBlank(message = "El nombre es obligatorio")
     @Size(min = 3, max = 20, message = "El nombre debe tener entre 3 y 20 caracteres")
     private String marca;
+
     @Column
     @NotBlank(message = "El nombre es obligatorio")
     @Size(min = 3, max = 20, message = "El nombre debe tener entre 3 y 20 caracteres")
     private String modelo;
+
     @Column
     @NotBlank(message = "El nombre es obligatorio")
     @Size(min = 2, max = 20, message = "El nombre debe tener entre 3 y 20 caracteres")
     private String color;
+
+    @Enumerated(EnumType.STRING)
+    private TipoVehiculo tipoVehiculo;
+
     @Column
     private Boolean estado;
 
@@ -91,6 +100,14 @@ public class Vehiculo {
 
     public void setConductor(Conductor conductor) {
         this.conductor = conductor;
+    }
+
+    public TipoVehiculo getTipoVehiculo() {
+        return tipoVehiculo;
+    }
+
+    public void setTipoVehiculo(TipoVehiculo tipoVehiculo) {
+        this.tipoVehiculo = tipoVehiculo;
     }
 
     

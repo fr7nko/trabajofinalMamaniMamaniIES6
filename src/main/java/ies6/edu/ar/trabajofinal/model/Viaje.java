@@ -8,6 +8,8 @@ import org.springframework.stereotype.Component;
 import jakarta.annotation.Generated;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -21,10 +23,15 @@ public class Viaje {
      @Id
      @GeneratedValue (strategy = GenerationType.IDENTITY)
      private Integer codigo;
+
+
+     @Enumerated(EnumType.STRING)
      @Column
-     private String tipoViaje;
+     private TipoViaje tipoViaje;
+
      @Column
      private Double precio;
+     
      @Column
      private LocalDate fechaViaje;
 
@@ -42,7 +49,9 @@ public class Viaje {
      }
 
 
-     public Viaje(Integer codigo, String tipoViaje, Double precio, LocalDate fechaViaje, Usuario usuario,
+
+
+     public Viaje(Integer codigo, TipoViaje tipoViaje, Double precio, LocalDate fechaViaje, Usuario usuario,
             Vehiculo vehiculo) {
         this.codigo = codigo;
         this.tipoViaje = tipoViaje;
@@ -50,7 +59,10 @@ public class Viaje {
         this.fechaViaje = fechaViaje;
         this.usuario = usuario;
         this.vehiculo = vehiculo;
-     }
+    }
+
+
+
 
 
      public Integer getCodigo() {
@@ -63,14 +75,7 @@ public class Viaje {
      }
 
 
-     public String getTipoViaje() {
-         return tipoViaje;
-     }
-
-
-     public void setTipoViaje(String tipoViaje) {
-         this.tipoViaje = tipoViaje;
-     }
+  
 
 
      public Double getPrecio() {
@@ -110,6 +115,20 @@ public class Viaje {
 
      public void setVehiculo(Vehiculo vehiculo) {
          this.vehiculo = vehiculo;
+     }
+
+
+
+
+     public TipoViaje getTipoViaje() {
+         return tipoViaje;
+     }
+
+
+
+
+     public void setTipoViaje(TipoViaje tipoViaje) {
+         this.tipoViaje = tipoViaje;
      }
 
      

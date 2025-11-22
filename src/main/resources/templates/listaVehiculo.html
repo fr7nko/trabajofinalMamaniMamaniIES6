@@ -1,7 +1,7 @@
-
 <!-- vista de los autos para empezar el viaje-->
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -23,7 +23,7 @@
             border-radius: 10px;
             padding: 20px;
             width: 250px;
-            box-shadow: 2px 2px 8px rgba(0,0,0,0.1);
+            box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.1);
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -54,43 +54,61 @@
         .btn-success {
             background-color: #28a745;
         }
-
     </style>
 </head>
+
 <body>
     <header>
         <h1>Lista de Vehículos</h1>
+        
     </header>
 
     <main>
-        <div data-th-if="${correcto}" class="alert alert-success">
-            <span th:text="${correcto}"></span>
-        </div>
-
         <div class="card-container">
             <div class="card" data-th-each="vehiculo : ${listadoVehiculo}">
-                <h3 th:text="${vehiculo.marca} + ' ' + ${vehiculo.modelo}">Marca Modelo</h3>
-                  <p>
-        <strong>Conductor:</strong>
-        <span th:text="${vehiculo.conductor != null ? vehiculo.conductor.nombre + ' ' + vehiculo.conductor.apellido : 'Sin conductor'}">
-            Sin conductor
-        </span>
-    </p>
-                <p><strong>Patente:</strong> <span th:text="${vehiculo.patente}">1234</span></p>
-                <p><strong>Color:</strong> <span th:text="${vehiculo.color}">Rojo</span></p>
 
-                <!-- Botones -->
-                <a th:href="@{'/eliminarVehiculo/'+${vehiculo.patente}}" class="btn">Borrar</a>
-                <a th:href="@{'/modificarVehiculo/'+${vehiculo.patente}}" class="btn">Modificar</a>
-                <!-- <a th:href="@{'/viaje/'+${vehiculo.patente}}" class="btn btn-success">Cargar usuario</a> -->
+                <!-- Título centrado -->
+                <h3 class="titulo-centro" th:text="${vehiculo.marca} + ' ' + ${vehiculo.modelo}">
+                    Marca Modelo
+                </h3>
+
+                <!-- Datos alineados a la derecha -->
+                <div class="derecha">
+                    <p>
+                        <strong>Conductor:</strong>
+                        <span
+                            th:text="${vehiculo.conductor != null ? vehiculo.conductor.nombre + ' ' + vehiculo.conductor.apellido : 'Sin conductor'}">
+                            Sin conductor
+                        </span>
+                    </p>
+
+                    <p><strong>Patente:</strong>
+                        <span th:text="${vehiculo.patente}">1234</span>
+                    </p>
+
+                    <p><strong>Color:</strong>
+                        <span th:text="${vehiculo.color}">Rojo</span>
+                    </p>
+
+                    <p><strong>Tipo:</strong>
+                        <span th:text="${vehiculo.tipoVehiculo}">Tipo</span>
+                    </p>
+                </div>
+
+                <!-- Botón -->
+                <div>
+                    <a th:href="@{'/eliminarVehiculo/'+${vehiculo.patente}}" class="btn">Borrar</a>
+                    <a th:href="@{'/modificarVehiculo/'+${vehiculo.patente}}" class="btn">Modificar</a>
+                </div>
             </div>
+
+
         </div>
 
         <!-- Botones de navegación -->
         <div style="text-align:center; margin-top:20px;">
-            <a href="/vehiculo" class="btn">VOLVER</a>
+            <a href="/usuario" class="btn">VOLVER</a>
             <a href="/" class="btn">INICIO</a>
-           <!--  <a href="/listaViajes" class="btn">VER VIAJES REALIZADOS</a>-->
         </div>
     </main>
 
@@ -98,4 +116,5 @@
         <p>© 2025 IES N°6 - Todos los derechos reservados</p>
     </footer>
 </body>
+
 </html>

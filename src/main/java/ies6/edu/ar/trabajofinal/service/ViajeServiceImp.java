@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
+import ies6.edu.ar.trabajofinal.model.TipoVehiculo;
+import ies6.edu.ar.trabajofinal.model.TipoViaje;
 import ies6.edu.ar.trabajofinal.model.Viaje;
 
 @Service
@@ -52,7 +54,41 @@ public class ViajeServiceImp implements ViajeServiceI {
         return nuevoViaje;
     }
 
+    @Override
+    public double calcularPrecio(TipoViaje tipoViaje, TipoVehiculo tipoVehiculo) {
+       
+        double base = 0;
 
-  
+        //precio de la distancia
+        switch (tipoViaje) {
+            case CORTA:
+                base = 7000;
+                break;
+            case MEDIA:
+                base = 10000;
+                break;
+            case LARGA:
+                base = 20000;
+                break;    
+            }
+
+        //aumento
+
+            double extra = 0;
+
+        switch (tipoVehiculo) {
+            case X:
+                extra = 0;
+                break;
+            case LUXE:
+                extra = 0.10;
+                break;
+            case PREMIUM:
+                extra = 0.20;
+                break;
+        }
+
+        return base + (base * extra);
     
+}
 }

@@ -20,6 +20,7 @@ public interface ConductorServiceI {
     public Conductor buscarUnConductor(Integer dni) throws Exception;
     public Conductor crearNuevoConductor();
     public List<Conductor> listarTodosConductorActivos();
+    public List<Conductor> listarConductoresLibres();
 
 
 }

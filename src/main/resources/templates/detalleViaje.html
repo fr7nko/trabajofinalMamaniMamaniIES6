@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Detalle del Viaje</title>
+    <link rel="stylesheet" th:href="@{/style.css}">
+</head>
+<body>
+
+<h1>Detalle del Viaje</h1>
+
+<div class="card">
+
+    <p><strong>Código del Viaje:</strong>
+        <span th:text="${viaje.codigo}"></span>
+    </p>
+
+    <p><strong>Vehículo (Patente):</strong>
+        <span th:text="${viaje.vehiculo.patente}"></span>
+    </p>
+
+    <p><strong>Usuario:</strong>
+        <span th:text="${viaje.usuario.nombre + ' ' + viaje.usuario.apellido}"></span>
+    </p>
+
+    <p><strong>Tipo de Viaje:</strong>
+        <span th:text="${viaje.tipoViaje}"></span>
+    </p>
+
+    <p><strong>Precio:</strong>
+        $<span th:text="${viaje.precio}"></span>
+    </p>
+
+    <p><strong>Fecha:</strong>
+        <span th:text="${viaje.fechaViaje}"></span>
+    </p>
+
+</div>
+
+<div style="margin-top:20px;">
+    <a href="/listaViajes" class="btn">Ver Lista de Viajes</a>
+    <a href="/" class="btn">Inicio</a>
+</div>
+
+</body>
+</html>
