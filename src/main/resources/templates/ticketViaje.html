@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ticket del Viaje</title>
+    <link rel="stylesheet" th:href="@{/style.css}">
+</head>
+
+<body>
+
+    <header>
+        <h1>Ticket del Viaje</h1>
+    </header>
+
+    <main>
+        <div class="card-container">
+            <div class="ticket">
+
+                <h2>Datos del Viaje</h2>
+
+                <p><strong>Código:</strong> <span th:text="${viaje.codigo}"></span></p>
+
+                <p><strong>Vehículo (Patente):</strong>
+                    <span th:text="${viaje.vehiculo.patente}"></span>
+                </p>
+
+                <p><strong>Usuario:</strong>
+                    <span th:text="${viaje.usuario.nombre + ' ' + viaje.usuario.apellido}"></span>
+                </p>
+
+                <p><strong>Tipo de Viaje:</strong>
+                    <span th:text="${viaje.tipoViaje}"></span>
+                </p>
+
+                <p><strong>Fecha:</strong>
+                    <span th:text="${viaje.fechaViaje}"></span>
+                </p>
+
+                <p><strong>Precio Final:</strong>
+                    <span th:text="${viaje.precio}"></span>
+                </p>
+
+                <br>
+                <a href="/" class="btn">Volver al inicio</a>
+                <a href="/listarViajes" class="btn">Ver listado de viajes</a>
+            </div>
+        </div>
+    </main>
+
+</body>
+
+</html>

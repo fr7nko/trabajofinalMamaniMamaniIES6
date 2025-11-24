@@ -62,5 +62,10 @@ public class ConductorServiceMySQL implements ConductorServiceI {
         return conductorRepository.findByEstado(true);
     }
 
+    @Override
+    public List<Conductor> listarConductoresLibres() {
+        return conductorRepository.findByEstado(false);
+    }
+
 
 }

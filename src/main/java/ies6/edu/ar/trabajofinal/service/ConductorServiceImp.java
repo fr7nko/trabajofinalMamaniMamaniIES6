@@ -57,5 +57,11 @@ public class ConductorServiceImp implements ConductorServiceI{
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'listarTodosConductorActivos'");
     }
+
+    @Override
+    public List<Conductor> listarConductoresLibres() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'listarConductoresLibres'");
+    }
     
 }

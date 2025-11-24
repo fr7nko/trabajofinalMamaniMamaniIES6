@@ -31,13 +31,13 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr th:each="v : ${listaViajes}">
-                     <td th:text="${v.codigo}"></td>
-                     <td th:text="${v.tipoViaje}"></td>
-                     <td th:text="${v.precio}"></td>
-                    <td th:text="${v.fechaViaje}"></td>
-                    <td th:text="${v.usuario.nombre}"></td>
-                    <td th:text="${v.vehiculo.patente}"></td>
+                    <tr th:each="Viaje: ${listadoViajes}">
+                     <td th:text="${Viaje.codigo}"></td>
+                     <td th:text="${Viaje.tipoViaje}"></td>
+                     <td th:text="${Viaje.precio}"></td>
+                    <td th:text="${Viaje.fechaViaje}"></td>
+                    <td th:text="${Viaje.usuario.nombre}"></td>
+                    <td th:text="${Viaje.vehiculo.patente}"></td>
         </tr>
                 </tbody>
             </table>
@@ -45,7 +45,7 @@
 
         <!-- Botones -->
         
-            <a href="/viajar" class="btn">VOLVER</a>
+            <a href="/realizarViajes" class="btn">VOLVER</a>
             <a href="/" class="btn">INICIO</a>
     
     </main>

@@ -8,5 +8,6 @@ import ies6.edu.ar.trabajofinal.model.Conductor;
 @Repository
 public interface ConductorRepository extends CrudRepository<Conductor, Integer> {
 
-    public List<Conductor> findByEstado (Boolean estado); 
+   public List<Conductor> findByEstado (Boolean estado); 
+   // List<Conductor> findByVehiculoIsNullAndEstadoTrue();
 }
